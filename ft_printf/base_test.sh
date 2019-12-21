@@ -12,7 +12,9 @@
 # **************************************************************************** #
 
 ROOT=$(dirname "$0")
-source "$ROOT/vars.sh"
+source "$ROOT/../vars.sh"
+
+gcc -Wall -Wextra -Werror -o base_conv.test $ROOT/../../srcs/base_convert.c $ROOT/base_test.c -I $ROOT/../../ -I $ROOT/../../libft/ -L$ROOT/../../libft/ -lft
 
 START=0
 END=1000
@@ -44,7 +46,7 @@ while [ $i -lt $END ]; do
 	nb=$(echo "obase=$IN; $i" | bc)
 	ob=$(echo "obase=$IN; $OUT" | bc)
 
-	test=$($ROOT/../printf $nb $IN $OUT)
+	test=$($ROOT/base_conv.test $nb $IN $OUT)
 	exp=$(echo "ibase=$IN; obase=$ob; $nb" | bc)
 	echo "$test" > test_tmp
 	echo "$exp" > exp_tmp
