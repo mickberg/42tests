@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   base_test.c                                        :+:      :+:    :+:   */
+/*   main_test.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mikaelberglund <marvin@42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/13 14:56:35 by mikaelber         #+#    #+#             */
-/*   Updated: 2019/12/21 02:45:55 by mikaelber        ###   ########.fr       */
+/*   Created: 2020/02/04 15:43:12 by mikaelber         #+#    #+#             */
+/*   Updated: 2020/02/04 15:44:01 by mikaelber        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_test.h"
 
-int		main(int argc, char **argv)
+int		main(void)
 {
-	char	*res;
-
-	if (argc == 2)
-		res = base_convert(argv[1], 16, 8);
-	else if (argc == 3)
-		res = base_convert(argv[1], ft_atoi(argv[2]), 10);
-	else if (argc == 4)
-		res = base_convert(argv[1], ft_atoi(argv[2]), ft_atoi(argv[3]));
-	else
-		return (0);
-
-	printf("%s", res);
+	ft_printf("Testing env ready. %b\n", 33);
 	return (0);
 }
