@@ -6,7 +6,7 @@
 /*   By: mikaelberglund <marvin@42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 17:26:05 by mikaelber         #+#    #+#             */
-/*   Updated: 2020/02/07 21:01:21 by mikaelber        ###   ########.fr       */
+/*   Updated: 2020/02/09 20:01:55 by mikaelber        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void print_output_to_file(const char *format, int out_diff[2], va_list ap
 	va_end(ap_exp);
 }
 
-void		run_test(FILE *res_fd, const char *legend, const char *format, ...)
+void		run_test(t_testinfo *info, const char *legend, const char *format, ...)
 {
 	va_list ap;
 	int		len_diff[2];
@@ -54,11 +54,21 @@ void		run_test(FILE *res_fd, const char *legend, const char *format, ...)
 	va_end(ap);
 
 	// print output to file
-	if (len_diff[0] != len_diff[1] || out_diff != 0)
-		fprintf(res_fd, "\033[0;31m[fail]\033[0m");
-	else
-		fprintf(res_fd, "\033[0;32m[pass]\033[0m");
+	dprintf(1, "\r\033[K");
 	escaped = ft_strescape(format);
-	fprintf(res_fd, "\t%-30s\t%s\n", escaped, legend);
+	if (len_diff[0] != len_diff[1] || out_diff != 0)
+	{
+		if (info->passed != info->test_count)
+			dprintf(1, "\033[1A");
+		dprintf(1, "\033[0;31m[fail]\033[0m");
+		dprintf(1, "\t%-30s\t%s\n\n", escaped, legend);
+	}
+	else
+	{
+		info->passed++;
+		dprintf(1, "\033[0;32m[pass]\033[0m");
+		dprintf(1, "\t%-30s\t%s", escaped, legend);
+	}
+	info->test_count++;
 	free(escaped);
 }

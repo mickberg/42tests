@@ -6,7 +6,7 @@
 /*   By: mikaelberglund <marvin@42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:43:12 by mikaelber         #+#    #+#             */
-/*   Updated: 2020/02/09 15:29:59 by mikaelber        ###   ########.fr       */
+/*   Updated: 2020/02/09 19:56:01 by mikaelber        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 int		main(int argc, char **argv)
 {
-	FILE *res_fd;
-
+	t_testinfo	info;
 	(void)argv;
-	res_fd = fopen(OUT_FILE, "w");
+
+	ft_bzero(&info, sizeof(t_testinfo));
 	// testers
-	test_basics(res_fd);
-	test_int(res_fd);
-	test_string(res_fd);
-	// print output & cleanup
-	fclose(res_fd);
-	print_file(OUT_FILE);
+	test_basics(&info);
+	test_int(&info);
+	test_string(&info);
+
+	dprintf(1, "\r\033[K[%d of %d] tests passed\n", info.passed, info.test_count);
+
+	// cleanup
 	remove(USR_FILE);
 	remove(EXP_FILE);
-	printf("Test ended.\n");
 	if (argc > 1)
 		while (1);
 	return (0);
