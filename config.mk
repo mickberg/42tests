@@ -6,9 +6,9 @@
 #    By: mikaelberglund <marvin@42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/07 14:32:54 by mikaelber         #+#    #+#              #
-#    Updated: 2020/02/07 15:28:59 by mikaelber        ###   ########.fr        #
+#    Updated: 2020/02/07 16:07:08 by mikaelber        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-LIB_PATH=../../
-LIB_NAME=libft.a
+PRINTF_LIB_PATH = ~/dev/hive/libft/
+PRINTF_LIB_NAME = libft.a

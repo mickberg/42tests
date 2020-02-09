@@ -6,7 +6,7 @@
 /*   By: mikaelberglund <marvin@42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 17:26:05 by mikaelber         #+#    #+#             */
-/*   Updated: 2020/02/05 23:31:23 by mikaelber        ###   ########.fr       */
+/*   Updated: 2020/02/07 21:01:21 by mikaelber        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void		run_test(FILE *res_fd, const char *legend, const char *format, ...)
 	va_list ap;
 	int		len_diff[2];
 	int		out_diff;
+	char	*escaped;
 
 	// run comparative tests with native vprintf
 	va_start(ap, format);
@@ -57,5 +58,7 @@ void		run_test(FILE *res_fd, const char *legend, const char *format, ...)
 		fprintf(res_fd, "\033[0;31m[fail]\033[0m");
 	else
 		fprintf(res_fd, "\033[0;32m[pass]\033[0m");
-	fprintf(res_fd, "\t%-30s\t%s\n", format, legend);
+	escaped = ft_strescape(format);
+	fprintf(res_fd, "\t%-30s\t%s\n", escaped, legend);
+	free(escaped);
 }

@@ -6,14 +6,14 @@
 /*   By: mikaelberglund <marvin@42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 15:46:58 by mikaelber         #+#    #+#             */
-/*   Updated: 2020/02/05 23:16:26 by mikaelber        ###   ########.fr       */
+/*   Updated: 2020/02/09 15:29:14 by mikaelber        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_TEST_H
 # define FT_PRINTF_TEST_H
 
-# include "ft_printf.h"
+# include "libft.h"
 # include <stdarg.h>
 # include <stdlib.h>
 # include <stdio.h>
@@ -32,6 +32,8 @@
 
 void	run_test(FILE *res_fd, const char *legend, const char *format, ...);
 void	test_int(FILE *res_fd);
+void	test_basics(FILE *res_fd);
+void	test_string(FILE *res_fd);
 
 /*
 ** Utils
