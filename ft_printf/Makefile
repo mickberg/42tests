@@ -6,7 +6,7 @@
 #    By: mberglun <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/02 17:10:30 by mberglun          #+#    #+#              #
-#    Updated: 2020/02/07 17:07:14 by mikaelber        ###   ########.fr        #
+#    Updated: 2020/02/12 21:08:25 by mikaelber        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ SRC_FILES = \
 	tests/test_int.c \
 	tests/test_basics.c \
 	tests/test_string.c \
-	utils/file_io.c
+	utils/file_io.c \
+	utils/arguments.c
 
 SRCS = $(addprefix $(SRC_DIR), $(SRC_FILES:.c=.o))
 OBJS = $(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.o))

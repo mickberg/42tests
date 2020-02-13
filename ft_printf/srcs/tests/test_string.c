@@ -6,7 +6,7 @@
 /*   By: mikaelberglund <marvin@42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/07 16:55:11 by mikaelber         #+#    #+#             */
-/*   Updated: 2020/02/09 19:36:50 by mikaelber        ###   ########.fr       */
+/*   Updated: 2020/02/13 14:32:01 by mikaelber        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	test_string(t_testinfo *info)
 {
+	char	*test_str;
+
 	run_test(info, "s basic", "kalle %s", "anka");
 	run_test(info, "s basic 2words", "%s", "kalle anka");
 	run_test(info, "s basic 2strings", "%s%s", "frappo", "chino");
@@ -33,4 +35,14 @@ void	test_string(t_testinfo *info)
 	run_test(info, "s precision more", "%.10s", "kalle");
 	run_test(info, "s precision same", "%.5s", "kalle");
 	run_test(info, "s precision less", "%.2s", "kalle");
+
+	test_str = ft_strnew(5);
+	ft_memset(test_str, 0, sizeof(char) * 5);
+	ft_strncpy(test_str, "kalle", 5);
+
+	run_test(info, "s precision non-terminated str", "%s", test_str);
+	run_test(info, "s precision non-terminated str", "%.5s", test_str);
+	run_test(info, "s precision non-terminated str", "%.100s", test_str);
+
+	free(test_str);
 }
